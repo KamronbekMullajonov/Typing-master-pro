@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Master Pro - Ultimate Typing SaaS Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="toast-container" aria-live="assertive" aria-atomic="true"></div>
+
+    <div class="app-container">
+        <aside class="sidebar-nav" aria-label="Main Navigation">
+            <div class="brand">
+                <div class="logo-icon">🚀</div>
+                <div class="brand-text">
+                    <h1>Master Pro</h1>
+                    <span>Typing Engine v1.0</span>
+                </div>
+            </div>
+            
+            <nav class="nav-links">
+                <button class="nav-btn active" data-target="home"><span class="icon">🏠</span> Home</button>
+                <button class="nav-btn" data-target="test"><span class="icon">⌨️</span> Typing Test</button>
+                <button class="nav-btn" data-target="story"><span class="icon">📖</span> Story Mode</button>
+                <button class="nav-btn" data-target="stats"><span class="icon">📊</span> Statistics</button>
+                <button class="nav-btn" data-target="achievements"><span class="icon">🏆</span> Achievements</button>
+                <button class="nav-btn" data-target="leaderboard"><span class="icon">🌐</span> Leaderboard</button>
+                <button class="nav-btn" data-target="settings"><span class="icon">⚙️</span> Settings</button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="daily-badge" id="sidebar-daily-badge">
+                    <span class="badge-dot"></span> Daily Challenge Pending
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content" id="main-scroll-frame">
+            
+            <section id="view-home" class="app-view active">
+                <div class="hero-block">
+                    <h2 class="hero-title">Typing Master Pro</h2>
+                    <p class="hero-subtitle">Optimize your keystroke mechanics. Trace accuracy, unlock cryptographic story nodes, and conquer global speed leaderboards using pure performance diagnostics.</p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary btn-lg" onclick="window.appRouter('test')">Start Practice Test</button>
+                        <button class="btn btn-surface btn-lg" onclick="window.appRouter('story')">Launch Story Campaign</button>
+                    </div>
+                </div>
+
+                <h3 class="section-title">Personal Performance Highs</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="dashboard-best-wpm">0.0</div>
+                        <div class="stat-label">Peak Velocity (WPM)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="dashboard-best-acc">0%</div>
+                        <div class="stat-label">Max Accuracy Rating</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="dashboard-total-tests">0</div>
+                        <div class="stat-label">Evaluations Completed</div>
+                    </div>
+                </div>
+
+                <div class="card daily-challenge-banner">
+                    <div class="challenge-header">
+                        <span class="tag">Active System Quest</span>
+                        <h4 id="daily-title">Loading Daily Directive...</h4>
+                    </div>
+                    <p id="daily-desc" class="challenge-text">Synchronizing parameters with current atomic calendar cycle...</p>
+                    <div class="challenge-footer">
+                        <div class="progress-container-bar">
+                            <div class="progress-fill" id="daily-progress-bar" style="width: 0%"></div>
+                        </div>
+                        <span id="daily-status-label">0% Complete</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="view-test" class="app-view">
+                <div class="engine-control-bar">
+                    <div class="control-group">
+                        <label>Duration</label>
+                        <div class="segmented-control" id="control-time">
+                            <button class="segment-btn active" data-value="15">15s</button>
+                            <button class="segment-btn" data-value="30">30s</button>
+                            <button class="segment-btn" data-value="60">60s</button>
+                            <button class="segment-btn" data-value="120">120s</button>
+                            <button class="segment-btn" data-value="300">300s</button>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label>Complexity</label>
+                        <div class="segmented-control" id="control-difficulty">
+                            <button class="segment-btn active" data-value="easy">Easy</button>
+                            <button class="segment-btn" data-value="medium">Medium</button>
+                            <button class="segment-btn" data-value="hard">Hard</button>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label>Lexicon Module</label>
+                        <div class="segmented-control" id="control-category">
+                            <button class="segment-btn active" data-value="words">Words</button>
+                            <button class="segment-btn" data-value="quotes">Quotes</button>
+                            <button class="segment-btn" data-value="technology">Tech</button>
+                            <button class="segment-btn" data-value="programming">Code</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="live-telemetry">
+                    <div class="telemetry-node">
+                        <span class="lbl">Timer</span>
+                        <span class="val primary-text" id="live-timer">00</span>
+                    </div>
+                    <div class="telemetry-node">
+                        <span class="lbl">Live WPM</span>
+                        <span class="val" id="live-wpm">0</span>
+                    </div>
+                    <div class="telemetry-node">
+                        <span class="lbl">Accuracy</span>
+                        <span class="val" id="live-acc">100%</span>
+                    </div>
+                    <div class="telemetry-node">
+                        <span class="lbl">Faults</span>
+                        <span class="val danger-text" id="live-errors">0</span>
+                    </div>
+                </div>
+
+                <div class="typing-box-container" id="typing-box-focus-wrap" tabindex="0" aria-label="Typing Input Terminal Field. Focus to begin.">
+                    <div class="focus-overlay" id="focus-prompt">Click or Press Any Key to Engage Interface Focus</div>
+                    <input type="text" id="hidden-writer" autocomplete="off" autocapitalize="off" spellcheck="false" aria-hidden="true" mixins="none">
+                    <div class="words-render-field" id="text-display-pane"></div>
+                </div>
+
+                <div class="keyboard-hardware-frame" id="virtual-keyboard-matrix"></div>
+                
+                <div class="card diagnostic-results-card hidden" id="test-results-panel">
+                    <div class="results-layout-grid">
+                        <div class="grade-badge-circle" id="res-grade-badge">A</div>
+                        <div class="results-data-column">
+                            <h3>Performance Diagnostics Completed</h3>
+                            <p id="res-motivation" class="secondary-text"></p>
+                            <div class="matrix-grid">
+                                <div class="m-node"><span class="m-lbl">Net WPM</span><span class="m-val" id="res-wpm">0</span></div>
+                                <div class="m-node"><span class="m-lbl">Raw Speed</span><span class="m-val" id="res-raw">0</span></div>
+                                <div class="m-node"><span class="m-lbl">Accuracy</span><span class="m-val" id="res-acc">0%</span></div>
+                                <div class="m-node"><span class="m-lbl">Total Faults</span><span class="m-val" id="res-errors">0</span></div>
+                                <div class="m-node"><span class="m-lbl">Valid Keypress</span><span class="m-val" id="res-good">0</span></div>
+                                <div class="m-node"><span class="m-lbl">Invalid Keypress</span><span class="m-val" id="res-bad">0</span></div>
+                            </div>
+                            <div class="results-actions-row">
+                                <button class="btn btn-primary" id="btn-res-retry">Retry Scenario</button>
+                                <button class="btn btn-surface" id="btn-res-next">Iterate New Array</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="view-story" class="app-view">
+                <div class="hero-block mini-hero">
+                    <h2 class="hero-title">Campaign Matrix: Forgotten Trip</h2>
+                    <p class="hero-subtitle">Decrypt classified records across a 5-part sci-fi narrative sequence. Unlock subsequent planetary sectors by verifying accuracy standards.</p>
+                </div>
+
+                <div class="story-timeline-track" id="story-campaign-nodes-wrapper"></div>
+            </section>
+
+            <section id="view-stats" class="app-view">
+                <h2 class="section-title">Telemetry Analytics Engine</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="st-total-chars">0</div>
+                        <div class="stat-label">Total Characters Inputted</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="st-time-practiced">0m</div>
+                        <div class="stat-label">Time Engaged</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="st-consistency">0%</div>
+                        <div class="stat-label">System Consistency Rating</div>
+                    </div>
+                </div>
+
+                <div class="chart-layout-box card">
+                    <h4>Historical Net Velocity Scaling Profile</h4>
+                    <div class="canvas-render-wrapper">
+                        <canvas id="canvas-analytics-graph"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <section id="view-achievements" class="app-view">
+                <h2 class="section-title">Cryptographic Achievement Framework</h2>
+                <p class="secondary-text mb-4" id="achievement-unlocked-counter-lbl">Unlocked Channels: 0 / 20</p>
+                <div class="achievements-flex-grid" id="achievements-render-grid"></div>
+            </section>
+
+            <section id="view-leaderboard" class="app-view">
+                <div class="leaderboard-header-controls">
+                    <div>
+                        <h2 class="section-title">Synchronized Galactic Ranks</h2>
+                        <p class="secondary-text">Simulated network telemetry matching international velocity thresholds.</p>
+                    </div>
+                    <div class="filter-search-box">
+                        <input type="text" id="leaderboard-search-input" placeholder="Query pilot identifier profile...">
+                    </div>
+                </div>
+
+                <div class="table-frame card">
+                    <table class="leaderboard-data-table">
+                        <thead>
+                            <tr>
+                                <th>Global Rank</th>
+                                <th>Pilot Profile</th>
+                                <th>Net Velocity</th>
+                                <th>Accuracy Matrix</th>
+                                <th>Runs Logged</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboard-data-rows"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="view-settings" class="app-view">
+                <h2 class="section-title">Mainframe System Preferences</h2>
+                
+                <div class="card settings-stack-layout">
+                    <div class="settings-row-item">
+                        <div class="settings-meta">
+                            <label class="settings-lbl">Interface Chromatic Profile</label>
+                            <span class="settings-desc">Swap global element theme rulesets.</span>
+                        </div>
+                        <div class="segmented-control" id="set-theme">
+                            <button class="segment-btn active" data-value="dark">Dark Core</button>
+                            <button class="segment-btn" data-value="light">Light High-Contrast</button>
+                        </div>
+                    </div>
+
+                    <div class="settings-row-item">
+                        <div class="settings-meta">
+                            <label class="settings-lbl">Synthesizer Audio Feedback</label>
+                            <span class="settings-desc">Toggles procedural oscillators on mechanical input verification.</span>
+                        </div>
+                        <div class="toggle-switch-input">
+                            <input type="checkbox" id="set-audio-toggle" checked>
+                            <label for="set-audio-toggle"></label>
+                        </div>
+                    </div>
+
+                    <div class="settings-row-item">
+                        <div class="settings-meta">
+                            <label class="settings-lbl">Typography Base Sizing</label>
+                            <span class="settings-desc">Modifies font rendering scales in active test arrays.</span>
+                        </div>
+                        <div class="segmented-control" id="set-font-size">
+                            <button class="segment-btn" data-value="1.25rem">Compact</button>
+                            <button class="segment-btn active" data-value="1.75rem">Balanced</button>
+                            <button class="segment-btn" data-value="2.25rem">Magnified</button>
+                        </div>
+                    </div>
+
+                    <div class="settings-row-item">
+                        <div class="settings-meta">
+                            <label class="settings-lbl">Kinetic UI Animations</label>
+                            <span class="settings-desc">Allows disabling micro-interpolation UI layouts.</span>
+                        </div>
+                        <div class="toggle-switch-input">
+                            <input type="checkbox" id="set-animation-toggle" checked>
+                            <label for="set-animation-toggle"></label>
+                        </div>
+                    </div>
+
+                    <div class="danger-zone-box">
+                        <h4>System Maintenance Parameters</h4>
+                        <p class="secondary-text">Irreversibly resets local engine logs, clearing stored configurations.</p>
+                        <div class="danger-actions">
+                            <button class="btn btn-danger" onclick="window.resetEngineData()">Wipe Cache Data</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="data/easy.js"></script>
+    <script src="data/medium.js"></script>
+    <script src="data/hard.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
